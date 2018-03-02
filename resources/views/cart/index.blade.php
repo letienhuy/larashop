@@ -17,7 +17,7 @@
                             </h1>
                         @endif
                         @foreach($topProduct as $p)
-                            <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="col-md-2 col-sm-3 col-xs-6">
                             <div class="product">
                             <a href="{{route('product.detail', ['uri' => Helper::seo($p->name), 'id' => $p->id])}}">
                             <div class="thumb" style="background-image: url({{ $p->image->first()->url ?? $p->defaultImage() }});"></div>

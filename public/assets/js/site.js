@@ -14,14 +14,10 @@ $('.list-menu button').click(function() {
     var ul = $('.list-menu ul:first');
     ul.toggle('slide');
     if (!buttonRotate) {
-        $('.list-menu button i').css({
-            'transform': 'rotate(180deg)'
-        });
+        $('.list-menu button').addClass('button-toggle');
         buttonRotate = true;
     } else {
-        $('.list-menu button i').css({
-            'transform': 'rotate(0)'
-        });
+        $('.list-menu button').removeClass('button-toggle');
         buttonRotate = false;
     }
 });

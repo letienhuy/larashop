@@ -286,7 +286,7 @@ header .head-body .logo img {
 .list-menu {
   width: 100%;
   height: 50px;
-  background: #E71D36;
+  background: #ddd;
   cursor: pointer;
 }
 
@@ -303,20 +303,20 @@ header .head-body .logo img {
   list-style: none;
   display: inline-block;
   line-height: 40px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   margin: 5px 2px;
   padding: 0 10px;
 }
 
 .list-menu ul li:hover {
-  background: #011627;
+  background: #bbb;
   border-radius: 4px;
 }
 
 .list-menu ul li a {
   text-decoration: none;
-  color: #ffffff;
+  color: #000;
 }
 
 .list-menu .dropdown-menu {
@@ -356,9 +356,9 @@ header .head-body .logo img {
   left: 0;
   min-width: 180px;
   width: auto;
-  border-radius: 0 0 5px 5px;
-  background: whitesmoke;
-  box-shadow: #110011 0 0 5px;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: #110011 0 0 2px;
   margin: 0;
   padding: 0;
   z-index: 999;
@@ -439,30 +439,15 @@ header .head-body .logo img {
 }
 
 h1.title {
-  height: 100%;
-  border-bottom: 2px solid #4949fd;
   margin: 5px 0;
-  font-size: 16px;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 20px;
 }
 
 h1.title span {
-  position: relative;
-  display: inline-block;
+  font-weight: bold;
   line-height: 20px;
-  background: #4949fd;
-  padding: 5px;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-h1.title span::before {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-color: transparent transparent #4949fd #4949fd;
-  border-width: 0 15px 30px 0;
-  right: -15px;
-  top: 0;
 }
 
 .desc {
@@ -2388,26 +2373,48 @@ button:disabled {
     position: relative;
   }
   .list-menu button {
-    display: block;
+    position: relative;
     border: 0;
-    box-shadow: #666 0 0 3px;
-    width: 40px;
+    width: 36px;
     height: 30px;
     padding: 0;
     border-radius: 5px;
-    background: #eee;
-    margin: 10px 5px;
+    background: transparent;
+    margin: 10px 0;
+    display: block;
+    left: 5px;
   }
-  .list-menu button i {
-    transition: all .2s ease-in;
+  .list-menu button:hover {
+    background: #6d70ff;
+  }
+  .list-menu button .icon-bar {
+    width: 20px;
+    height: 2px;
+    border: 1px solid #000;
+    margin: 4px 8px;
+    display: block;
+    transition: all .2s;
+  }
+  .list-menu .button-toggle .icon-bar {
+    position: absolute;
+    top: 10px;
+  }
+  .list-menu .button-toggle .icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .list-menu .button-toggle .icon-bar:nth-child(2) {
+    display: none;
+  }
+  .list-menu .button-toggle .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
   }
   .list-menu ul {
     display: none;
     margin: 0;
     padding: 0;
     position: absolute;
-    background: #EFFFE9;
-    box-shadow: #555 2px 2px 5px;
+    background: #fff;
+    box-shadow: #555 1px 1px 3px;
     left: 0;
     top: 50px;
     width: auto;
