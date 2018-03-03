@@ -50,6 +50,8 @@ class AdminController extends Controller
                     $product->save();
                     $productPath = public_path('upload/product/'.$product->id);
                     if(!is_null(session('image'))){
+                    if(!file_exists(public_path('upload')))
+                        mkdir(public_path('upload'));
                     if(!file_exists(public_path('upload/product')))
                         mkdir(public_path('upload/product'));
                     if(!file_exists($productPath))
