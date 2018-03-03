@@ -57,16 +57,17 @@ class AdminController extends Controller
                     if(!file_exists($productPath))
                         mkdir($productPath);
                     foreach(session('image') as $key => $val){
-                        if(file_exists(public_path('upload/tmp/'.$key))){
-                            if(copy(public_path('upload/tmp/'.$key), public_path('upload/product/'.$product->id.'/'.$key))){
-                                $img = new Image;
-                                $img->url = url('upload/product/'.$product->id.'/'.$key);
-                                $img->product_id = $product->id;
-                                $img->save();
-                                unlink(public_path('upload/tmp/'.$key));
+                            if(file_exists(public_path('upload/tmp/'.$key))){
+                                if(copy(public_path('upload/tmp/'.$key), public_path('upload/product/'.$product->id.'/'.$key))){
+                                    $img = new Image;
+                                    $img->url = url('upload/product/'.$product->id.'/'.$key);
+                                    $img->product_id = $product->id;
+                                    $img->save();
+                                    unlink(public_path('upload/tmp/'.$key));
+                                }
                             }
                         }
-                    }}
+                    }
                     session()->forget('image');
                     return redirect()->route('admin.product');
                 }
@@ -88,9 +89,7 @@ class AdminController extends Controller
             break;
             case 'deleteImage':
                 if(session()->has('image')){
-                    $image = session('image');
-                    unset($image[$request->image]);
-                    session(['image' => $image]);
+                    unset(session("image")[$request->image]);
                     if(file_exists(public_path('upload/tmp/'.$request->image))){
                         unlink(public_path('upload/tmp/'.$request->image));
                     }elseif(file_exists(public_path('upload/product/'.$request->id.'/'.$request->image))){
