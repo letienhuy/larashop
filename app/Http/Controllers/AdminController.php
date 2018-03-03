@@ -48,20 +48,20 @@ class AdminController extends Controller
                     $product->keywords = $request->keyword;
                     $product->top = $request->top ? 1 : 0;
                     $product->save();
-                    $productPath = public_path('upload/product/'.$product->id);
+                    $productPath = 'upload/product/'.$product->id;
                     if(!is_null(session('image'))){
-                    if(!file_exists(public_path('upload/product')))
-                        mkdir(public_path('upload/product'));
+                    if(!file_exists('upload/product'))
+                        mkdir('upload/product');
                     if(!file_exists($productPath))
                         mkdir($productPath);
                     foreach(session('image') as $key => $val){
-                        if(file_exists(public_path('upload/tmp/'.$key))){
-                            if(copy(public_path('upload/tmp/'.$key), public_path('upload/product/'.$product->id.'/'.$key))){
+                        if(file_exists('upload/tmp/'.$key)){
+                            if(copy('upload/tmp/'.$key, 'upload/product/'.$product->id.'/'.$key)){
                                 $img = new Image;
                                 $img->url = url('upload/product/'.$product->id.'/'.$key);
                                 $img->product_id = $product->id;
                                 $img->save();
-                                unlink(public_path('upload/tmp/'.$key));
+                                unlink('upload/tmp/'.$key);
                             }
                         }
                     }}
