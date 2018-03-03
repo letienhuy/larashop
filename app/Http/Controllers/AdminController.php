@@ -50,9 +50,9 @@ class AdminController extends Controller
                     $product->save();
                     $productPath = public_path('upload/product/'.$product->id);
                     if(!is_null(session('image'))){
-                    if(!is_dir(public_path('upload/product')))
+                    if(!file_exists(public_path('upload/product')))
                         mkdir(public_path('upload/product'));
-                    if(!is_dir($productPath))
+                    if(!file_exists($productPath))
                         mkdir($productPath);
                     foreach(session('image') as $key => $val){
                         if(file_exists(public_path('upload/tmp/'.$key))){
